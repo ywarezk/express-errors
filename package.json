@@ -1,0 +1,32 @@
+{
+  "name": "express-zonejs-errors",
+  "version": "1.0.0",
+  "description": "Better way to deal with express error handling. The right way to deal with async errors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ywarezk/express-zonejs-errors.git"
+  },
+  "keywords": [
+    "express",
+    "errors",
+    "async",
+    "zonejs"
+  ],
+  "author": "ywarezk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ywarezk/express-zonejs-errors/issues"
+  },
+  "homepage": "https://github.com/ywarezk/express-zonejs-errors#readme",
+  "dependencies": {
+    "zone.js": "^0.10.2"
+  },
+  "devDependencies": {
+    "mocha": "^7.0.1",
+    "typescript": "^3.7.5"
+  }
+}
