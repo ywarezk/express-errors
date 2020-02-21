@@ -13,7 +13,7 @@ import zoneErrors from '../../src';
 
 const app = express();
 
-app.use(zoneErrors);
+app.use(zoneErrors());
 
 app.get('*', function() {
     setTimeout(() => {

@@ -9,9 +9,11 @@
  */
 
 import appZone from './app-zone';
-import app from './app';
+// import app from './app';
 import { Done } from 'mocha';
 import { Server } from 'http';
+import axios from 'axios';
+import { expect } from 'chai';
 
 describe('setTimeout server', () => {
     let server: Server;
@@ -20,6 +22,7 @@ describe('setTimeout server', () => {
         // run the server
         before((done: Done) => {
             server = appZone.listen(3000, () => {
+                console.log('we are now listening...');
                 done();
             });
         });
@@ -28,6 +31,12 @@ describe('setTimeout server', () => {
             server.close();
         });
 
-        it('should be directed to the error page', () => {});
+        it('should be directed to the error page', async () => {
+            try {
+                await axios.get('http://localhost:3000/');
+            } catch (err) {
+                expect(err.response.status).to.equal(500);
+            }
+        });
     });
 });
