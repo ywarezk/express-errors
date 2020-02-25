@@ -11,11 +11,14 @@ import zoneApp from './app-zone';
 import app from './app';
 import autoCannon from 'autocannon';
 import { Application } from 'express';
+import { Server } from 'http';
+import { promises } from 'fs';
+import { resolve } from 'path';
 
-async function startServer(app: Application): Promise<void> {
+async function startServer(app: Application): Promise<Server> {
     return new Promise(resolve => {
-        app.listen(3000, function() {
-            resolve();
+        const server = app.listen(3000, function() {
+            resolve(server);
         });
     });
 }
@@ -25,20 +28,22 @@ async function startServer(app: Application): Promise<void> {
  */
 async function main(): Promise<void> {
     // zone benchmark
-    await startServer(zoneApp);
+    let server = await startServer(zoneApp);
     let result = await autoCannon({
         url: 'http://localhost:3000',
     });
-    console.log('Zone result:');
-    console.log(result);
+    server.close();
+    await promises.writeFile(resolve(__dirname, 'benchmark-report.zone.json'), JSON.stringify(result));
 
     // no zone benchmark
-    await startServer(app);
+    server = await startServer(app);
     result = await autoCannon({
         url: 'http://localhost:3000',
     });
+    server.close();
     console.log('without zone result:');
     console.log(result);
+    await promises.writeFile(resolve(__dirname, 'benchmark-report.nozone.json'), JSON.stringify(result));
 }
 
 main();
