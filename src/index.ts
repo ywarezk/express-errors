@@ -21,7 +21,7 @@ function onHandleError(_parentZoneDelegate: ZoneDelegate, currentZone: Zone, _ta
  * Openning a zone for every req and saving the req/res object in the zone
  */
 export default function zoneErrors(): RequestHandler {
-    return (_req: Request, res: Response, next: NextFunction): void => {
+    return (_req: Request, _res: Response, next: NextFunction): void => {
         const expressZone = Zone.current.fork({
             properties: {
                 next,
@@ -31,10 +31,6 @@ export default function zoneErrors(): RequestHandler {
         });
         expressZone.run(() => {
             next();
-        });
-
-        res.on('finish', () => {
-            console.log('response is finished');
         });
     };
 }

@@ -16,7 +16,7 @@ const app = express();
 
 app.use(zoneErrors());
 
-app.get('*', async function(req, res) {
+app.get('*', async function() {
     await promises.readFile('/path/to/nowhere');
 });
 
