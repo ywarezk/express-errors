@@ -6,6 +6,9 @@
   "scripts": {
     "test": "mocha -r ts-node/register __tests__/**/*.spec.ts"
   },
+  "files": [
+    "./dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ywarezk/express-zonejs-errors.git"
