@@ -10,7 +10,7 @@
 import express from 'express';
 import { promises } from 'fs';
 import { resolve } from 'path';
-import zoneErrors from '../../src';
+import zoneErrors from '../..';
 
 const app = express();
 
