@@ -1,5 +1,7 @@
 # Express Zone.js Errors
 
+[![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-zonejs-errors/badge.svg?branch=master)](https://coveralls.io/github/ywarezk/express-zonejs-errors?branch=master)
+
 You are probably wondering...
 Why oh why would I need to use a middleware to help me deal with exceptions in my code?
 
