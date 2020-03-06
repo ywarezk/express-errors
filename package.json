@@ -1,11 +1,16 @@
 {
   "name": "express-zonejs-errors",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Better way to deal with express error handling. The right way to deal with async errors",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "mocha -r ts-node/register __tests__/**/*.spec.ts"
+    "lint": "eslint --plugin markdown --ext ts,md src",
+    "test": "mocha -r ts-node/register --reporter spec --bail --check-leaks __tests__/**/*.spec.ts",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -r ts-node/register --reporter dot --check-leaks __tests__/**/*.spec.ts",
+    "travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- -r ts-node/register --reporter spec --check-leaks __tests__/**/*.spec.ts",
+    "coveralls": "coveralls < ./coverage/lcov.info",
+    "build": "tsc"
   },
   "files": [
     "dist/"
@@ -46,6 +51,7 @@
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-prettier": "^3.1.2",
     "express": "^4.17.1",
+    "istanbul": "^0.4.5",
     "mocha": "^7.0.1",
     "mocha-lcov-reporter": "^1.3.0",
     "prettier": "^1.19.1",

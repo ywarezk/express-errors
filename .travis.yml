@@ -1,5 +1,12 @@
 language: node_js
-cache:
-  directories:
-    - node_modules
-    
+deploy:
+  on:
+    tags: true
+script:
+  - npm run lint
+  - npm run build
+  - npm test
+  - npm run coverage
+  - npm run travis
+after_script:
+  - npm run coveralls
