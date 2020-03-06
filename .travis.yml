@@ -2,6 +2,7 @@ language: node_js
 deploy:
   on:
     tags: true
+  provider: npm
 script:
   - npm run lint
   - npm run build
