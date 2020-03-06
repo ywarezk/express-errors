@@ -3,6 +3,9 @@ deploy:
   on:
     tags: true
   provider: npm
+  skip_cleanup: true
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
 script:
   - npm run lint
   - npm run build
