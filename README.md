@@ -2,6 +2,43 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-zonejs-errors/badge.svg?branch=master)](https://coveralls.io/github/ywarezk/express-zonejs-errors?branch=master)
 
+## TLDR;
+
+this middleware will automatically catch exceptions, sync or async and transfer them to the error handling middlewares.
+
+### Installation
+
+```bash
+npm install express-zonejs-errors --save
+```
+
+or
+
+```bash
+yarn add express-zonejs-errors --save
+```
+
+Attach like a regular middleware
+
+```js
+const zoneErrors = require('express-zonejs-errors');
+
+app.use(zoneErrors());
+```
+
+I would recommend not to use it in all routes rather on those more complex routes that are prone to errors, for example routes that require access to database.
+For example:
+
+```js
+const zoneErrors = require('express-zonejs-errors');
+
+app.use('/api', zoneErrors());
+```
+
+this will only effect routes that start with **/api**
+
+## About
+
 You are probably wondering...
 Why oh why would I need to use a middleware to help me deal with exceptions in my code?
 
@@ -112,5 +149,16 @@ Well two things might happen:
 - The best result will be request hanging in limbo untill the client gets a timeout.
 - The worst case is the exception will propogate to node and in that case might terminate the process!
 
+## How this middleware helps with exceptions
+
+This middleware will open a **Zone.js** for every request that gets in.
+**Zones** are able to catch exceptions, also exceptions in our async code. 
+So when the zone catch an exception it will send that exception to the error middlewares.
+
+## Performance - The price to pay
+
+You can examine the benchmarking I did to see the effect on performance to open a zone for every request.
+Bottom line: less then 1.5% reduce in Request Per Second.
+So you pay a small performance price for the ability to deal properly with errors.
 
 

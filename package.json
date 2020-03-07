@@ -23,7 +23,8 @@
     "express",
     "errors",
     "async",
-    "zonejs"
+    "zonejs",
+    "zone.js"
   ],
   "author": "ywarezk",
   "license": "MIT",
