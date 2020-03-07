@@ -15,6 +15,102 @@ To understand this fundemental yet very important question we must understand 2 
 Simple answer: Node will terminate the process when there is an uncaught exception.
 The exception can be in our sync code or in our async code node will terminate the process.
 Only exception is a rejected promise which node will dismiss with a warning and an additional deperecation message that this will also terminate the process in the future.
+So we have to consider exceptions as terminating the node process
 
 ## How Express deals with exceptions
+
+In express application we are creating middlewares to handle errors which are called **Error Handling Middlewares**
+to attach an error handling middleware we do the following:
+
+```js
+app.use(function(err, req, res, next) {
+    // do something like present and error page
+})
+```
+
+When express **catches** and error he will pass the request to the error middlewares according to the order we placed them.
+At the end of the chain of error middlewares, there is the default error handler that express is placing which will send a response specifying the error that happened and the stacktrace (in dev mode only)
+
+### How does Express **catch** an error
+
+To understand this important aspect of express we have to distinguish between two types of exceptions:
+- Exception that happen in our sync code - **Sync Exceptions**
+- Exceptions that happen in our async code - **Async Exceptions**
+Let's go over those two.
+
+#### Sync Exceptions
+
+can happen in one of our middlewares if we are trying to do something js can't.
+Let's show an example:
+
+```js
+app.get('/sync-error-example', (req, res) => {
+    const user = req.user;
+    res.send(`hello ${user.firstName} ${user.lastName}`);
+});
+```
+
+In this example in the case where **req.user** will be **undefined** there will be a sync exception when trying to access properties **firstName, lastName**
+show JS will throw an exception.
+Now we all know that node usually will terminate the process on exception, but express will help us deal with those exceptions and catch automatically those sync exceptions, and invoke the error middlewares we defined.
+So no need to do anything extra here since it will automatically move along to our error handling.
+
+#### Async exceptions
+
+Here is where things get tricky, and what this middleware is all about, removing that trickyness.
+Express cannot automatically catch async exceptions, and since it's JS and almost every other thing we do is async, a lot of our exceptions we need to handle ourselves.
+How do we handle async exceptions you ask?
+Let's give a few examples:
+
+- Async with error first callback:
+
+```js
+const fs = require('fs');
+app.get('/read-file', (req, res, next) => {
+    fs.readFile('stam.txt', (err, data) => {
+        // dealing with async error
+        if (err) {
+            next(err);
+            return;
+        }
+        res.send(data.toString());
+    });
+});
+```
+
+We see in this example that on error first callbacks we need to pass the exception to express by calling **next** and sending the **Error**
+
+- Async with promises:
+
+```js
+const fs = require('fs').promises
+app.get('/read-file-promise', (req, res, next) => {
+    fs.readFile('stam.txt').then(
+        (data) => {
+            res.send(data.toString());
+        },
+        (err) => {
+            next(err);
+        }
+    )
+});
+
+// or promises with async await
+app.get('/read-file-async-await', async (req, res, next) => {
+    try {
+        const data = await fs.readFile('stam.txt');
+        res.send(data.toString());
+    } catch(err) {
+        next(err);
+    }
+});
+```
+
+and what can happen if we will miss out on catching those exceptions?
+Well two things might happen:
+
+- The best result will be request hanging in limbo untill the client gets a timeout.
+- The worst case is the exception will propogate to node and in that case might terminate the process!
+
+
 
