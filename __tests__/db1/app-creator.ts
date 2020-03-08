@@ -10,10 +10,17 @@
  *
  */
 
-import express, { Application } from 'express';
+import { Application } from 'express';
+import { createApp } from '../test-utils';
+import { Todo } from './todo.model';
 
 export default function appCreator(isZone = true): Application {
-    const app = express();
+    const app = createApp(isZone);
+
+    app.get('*', async function(_req, res) {
+        const todos = await Todo.find();
+        res.json(todos);
+    });
 
     return app;
 }
