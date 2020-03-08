@@ -9,3 +9,11 @@
  * @license: MIT
  *
  */
+
+import express, { Application } from 'express';
+
+export default function appCreator(isZone = true): Application {
+    const app = express();
+
+    return app;
+}

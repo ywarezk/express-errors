@@ -7,15 +7,11 @@
  * @license: MIT
  */
 
-import express, { Application } from 'express';
-import zoneErrors from '../..';
+import { Application } from 'express';
+import { createApp } from '../test-utils';
 
 export default function appCreator(isZone = true): Application {
-    const app = express();
-
-    if (isZone) {
-        app.use(zoneErrors());
-    }
+    const app = createApp(isZone);
 
     app.get('*', function(_req, res) {
         res.send('hello world');

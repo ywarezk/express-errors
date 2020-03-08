@@ -8,17 +8,14 @@
  * @license: MIT
  */
 
-import express from 'express';
-import zoneErrors from '../..';
+import { createApp } from '../test-utils';
 
-const app = express();
-
-app.use(zoneErrors());
+const app = createApp();
 
 app.get('*', function() {
     setTimeout(() => {
         throw new Error('async error');
-    });
+    }, 0);
 });
 
 export default app;

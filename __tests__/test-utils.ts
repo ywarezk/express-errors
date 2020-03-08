@@ -8,11 +8,12 @@
  * @copyright: Nerdeez Ltd
  */
 
-import { Application } from 'express';
+import express, { Application } from 'express';
 import { Server } from 'http';
 import autoCannon from 'autocannon';
 import { resolve, dirname } from 'path';
 import { promises } from 'fs';
+import zoneErrors from '../';
 
 export async function startServer(app: Application): Promise<Server> {
     return new Promise(resolve => {
@@ -20,6 +21,16 @@ export async function startServer(app: Application): Promise<Server> {
             resolve(server);
         });
     });
+}
+
+export function createApp(isZone = true): Application {
+    const app = express();
+
+    if (isZone) {
+        app.use(zoneErrors());
+    }
+
+    return app;
 }
 
 export default async function runBenchmarkTest(

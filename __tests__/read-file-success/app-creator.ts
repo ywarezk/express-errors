@@ -7,17 +7,13 @@
  * @license: MIT
  */
 
-import express, { Application } from 'express';
+import { Application } from 'express';
 import { promises } from 'fs';
 import { resolve } from 'path';
-import zoneErrors from '../..';
+import { createApp } from '../test-utils';
 
 export default function appCreator(isZone = true): Application {
-    const app = express();
-
-    if (isZone) {
-        app.use(zoneErrors());
-    }
+    const app = createApp(isZone);
 
     app.get('*', async function(_req, res) {
         const file = await promises.readFile(resolve(__dirname, '../../README.md'));

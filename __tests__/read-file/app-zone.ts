@@ -8,13 +8,10 @@
  * @license: MIT
  */
 
-import express from 'express';
-import zoneErrors from '../..';
 import { promises } from 'fs';
+import { createApp } from '../test-utils';
 
-const app = express();
-
-app.use(zoneErrors());
+const app = createApp();
 
 app.get('*', async function() {
     await promises.readFile('/path/to/nowhere');
