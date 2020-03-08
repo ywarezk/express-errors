@@ -7,8 +7,7 @@
  * @license: MIT
  */
 
-import zoneApp from './app.zone';
-import app from './app';
+import appCreator from './app-creator';
 import runBenchmarkTest from '../test-utils';
 
 /**
@@ -16,10 +15,10 @@ import runBenchmarkTest from '../test-utils';
  */
 async function main(): Promise<void> {
     // zone benchmark
-    await runBenchmarkTest(zoneApp);
+    await runBenchmarkTest(appCreator());
 
     // no zone benchmark
-    await runBenchmarkTest(app, 'benchmark-report.nozone.json');
+    await runBenchmarkTest(appCreator(false), 'benchmark-report.nozone.json');
 }
 
 main();
