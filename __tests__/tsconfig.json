@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "lib": ["ES6"],                             /* Specify library files to be included in the compilation. */
+    "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+    "emitDecoratorMetadata": true,        /* Enables experimental support for emitting type metadata for decorators. */
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}
