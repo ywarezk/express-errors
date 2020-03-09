@@ -11,7 +11,7 @@
 import { promises } from 'fs';
 import { createApp } from '../test-utils';
 
-const app = createApp();
+const app = createApp(undefined, false);
 
 app.get('*', async function() {
     await promises.readFile('/path/to/nowhere');

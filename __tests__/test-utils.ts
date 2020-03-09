@@ -13,7 +13,7 @@ import { Server } from 'http';
 import autoCannon from 'autocannon';
 import { resolve, dirname } from 'path';
 import { promises } from 'fs';
-import zoneErrors, { ErrorStrategy } from '../';
+import zoneErrors, { ErrorStrategy } from '../src';
 
 export async function startServer(app: Application): Promise<Server> {
     return new Promise(resolve => {
@@ -29,13 +29,13 @@ class StamStrategy implements ErrorStrategy {
     };
 }
 
-export function createApp(isZone = true): Application {
+export function createApp(isZone = true, withStrategy = true): Application {
     const app = express();
 
     if (isZone) {
         app.use(
             zoneErrors({
-                strategy: new StamStrategy(),
+                strategy: withStrategy ? new StamStrategy() : undefined,
             }),
         );
     }
