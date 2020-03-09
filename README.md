@@ -155,11 +155,3 @@ Well two things might happen:
 This middleware will open a **Zone.js** for every request that gets in.
 **Zones** are able to catch exceptions, also exceptions in our async code. 
 So when the zone catch an exception it will send that exception to the error middlewares.
-
-## Performance - The price to pay
-
-You can examine the benchmarking I did to see the effect on performance to open a zone for every request.
-Bottom line: less then 1.5% reduce in Request Per Second.
-So you pay a small performance price for the ability to deal properly with errors.
-
-
