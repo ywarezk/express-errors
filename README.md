@@ -1,6 +1,7 @@
 # Express Zone.js Errors
 
 [![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-zonejs-errors/badge.svg?branch=master)](https://coveralls.io/github/ywarezk/express-zonejs-errors?branch=master)
+[![Build Result](https://travis-ci.com/ywarezk/express-zonejs-errors.svg?branch=master)](https://travis-ci.com/ywarezk/express-zonejs-errors.svg?branch=master)
 
 ## TLDR;
 
