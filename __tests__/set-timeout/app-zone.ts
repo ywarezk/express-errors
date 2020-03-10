@@ -8,14 +8,22 @@
  * @license: MIT
  */
 
-import { createApp } from '../test-utils';
+import { createApp, StamStrategy } from '../test-utils';
+import { Application } from 'express';
 
-const app = createApp();
+const app = createApp(undefined, new StamStrategy());
+const appNoStrategy = createApp();
 
-app.get('*', function() {
-    setTimeout(() => {
-        throw new Error('async error');
-    }, 0);
-});
+function setRoutes(app: Application): void {
+    app.get('*', function() {
+        setTimeout(() => {
+            throw new Error('async error');
+        }, 0);
+    });
+}
 
+setRoutes(app);
+setRoutes(appNoStrategy);
+
+export { appNoStrategy };
 export default app;

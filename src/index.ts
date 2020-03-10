@@ -10,6 +10,10 @@
 
 import 'zone.js';
 import { Request, Response, NextFunction, RequestHandler } from 'express';
+import debugCreator from 'debug';
+
+const debug = debugCreator('express-zonejs-errors');
+const debugError = debugCreator('express-zonejs-errors:error');
 
 /**
  * we attach this function to the zone error handling
@@ -25,7 +29,15 @@ function onHandleError(_parentZoneDelegate: ZoneDelegate, currentZone: Zone, _ta
     const strategy: ErrorStrategy = currentZone.get('strategy');
     if (strategy) {
         const req = currentZone.get('req');
-        strategy.handleError(error, req);
+        strategy.handleError(error, req).then(
+            () => debug(`${strategy.constructor.name}: Success handling exception`),
+            (err: Error) =>
+                debugError(`
+                ${strategy.constructor.name}: Failed handling exception
+                Message: ${err.message}
+                StackTracke: ${err.stack}
+            `),
+        );
     }
     next(error);
     return false;
