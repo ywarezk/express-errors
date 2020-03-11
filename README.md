@@ -10,13 +10,13 @@ this middleware will automatically catch exceptions, sync or async and transfer 
 ### Installation
 
 ```bash
-npm install express-zonejs-errors --save
+npm install express-errors --save
 ```
 
 or
 
 ```bash
-yarn add express-zonejs-errors --save
+yarn add express-errors --save
 ```
 
 Attach like a regular middleware
