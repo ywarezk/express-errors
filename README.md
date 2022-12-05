@@ -1,6 +1,6 @@
 # Express Zone.js Errors
 
-[![Known Vulnerabilities](https://snyk.io/test/github/ywarezk/express-errors/badge.svg)](https://snyk.io/test/github/ywarezk/express-errors)
+[![Known Vulnerabilities](https://snyk.io/test/github/ywarezk/express-errors/badge.svg)]
 ![build](https://github.com/ywarezk/express-errors/actions/workflows/ci.yaml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-errors/badge.svg?branch=main)](https://coveralls.io/github/ywarezk/express-errors?branch=main)
 
