@@ -1,7 +1,8 @@
 # Express Zone.js Errors
 
+[![Known Vulnerabilities](https://snyk.io/test/github/ywarezk/express-errors/badge.svg)](https://snyk.io/test/github/ywarezk/express-errors)
+![build](https://github.com/ywarezk/express-errors/actions/workflows/ci.yaml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-zonejs-errors/badge.svg?branch=master)](https://coveralls.io/github/ywarezk/express-zonejs-errors?branch=master)
-[![Build Result](https://travis-ci.com/ywarezk/express-zonejs-errors.svg?branch=master)](https://travis-ci.com/ywarezk/express-zonejs-errors.svg?branch=master)
 
 ## TLDR;
 

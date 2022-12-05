@@ -1,0 +1,16 @@
+# 
+# Every push to main i will release a new version of this package
+# This will run a build, test, and deploy for the package
+#
+# Created December 5th, 2022
+# @author: ywarezk
+# @version: 1.2.0
+# @license: MIT
+# 
+
+name: CI
+
+on:
+  push:
+    branches:
+      - "main"
