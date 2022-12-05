@@ -1,0 +1,4 @@
+exclude:
+	global:
+		- "__tests__"
+	

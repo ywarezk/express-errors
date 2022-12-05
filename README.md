@@ -2,7 +2,7 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/ywarezk/express-errors/badge.svg)](https://snyk.io/test/github/ywarezk/express-errors)
 ![build](https://github.com/ywarezk/express-errors/actions/workflows/ci.yaml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-zonejs-errors/badge.svg?branch=master)](https://coveralls.io/github/ywarezk/express-zonejs-errors?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-errors/badge.svg?branch=main)](https://coveralls.io/github/ywarezk/express-errors?branch=main)
 
 ## TLDR;
 
