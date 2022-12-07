@@ -35,7 +35,7 @@ function onHandleError(_parentZoneDelegate: ZoneDelegate, currentZone: Zone, _ta
                 debugError(`
                 ${strategy.constructor.name}: Failed handling exception
                 Message: ${err.message}
-                StackTracke: ${err.stack}
+                StackTrace: ${err.stack}
             `),
         );
     }

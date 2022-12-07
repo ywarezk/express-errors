@@ -24,3 +24,18 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.12.1
+      - run: |
+          npm install
+          npm run lint
+          npm test
+          npm run coverage
+          
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: "coverage/Icov.info"
+          
+          
+          
+        
