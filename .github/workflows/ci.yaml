@@ -35,7 +35,7 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: "coverage/Icov.info"
+          path-to-lcov: "./coverage/Icov.info"
           
       - run: npm publish
         env: 
