@@ -9,22 +9,30 @@
 
 this middleware will automatically catch exceptions, sync or async and transfer them to the error handling middlewares.
 
+[ExpressJS](https://expressjs.com/) is not good at catching error
+- Rejecting promises are not caught (In version 5 this will be improved) and will crash the process
+- Rejecting EventEmitter is not caught and will crash the process
+
+WE ARE GOOD AT CATCHING ERRORS
+
+we use zone.js to add execution context to express and detect every sync or async error and transfer it to express error middlewares
+
 ### Installation
 
 ```bash
-npm install express-errors --save
+npm install az-express-errors --save
 ```
 
 or
 
 ```bash
-yarn add express-errors --save
+yarn add az-express-errors --save
 ```
 
 Attach like a regular middleware
 
 ```js
-const zoneErrors = require('express-zonejs-errors');
+const zoneErrors = require('az-express-errors');
 
 app.use(zoneErrors());
 ```
@@ -33,7 +41,7 @@ I would recommend not to use it in all routes rather on those more complex route
 For example:
 
 ```js
-const zoneErrors = require('express-zonejs-errors');
+const zoneErrors = require('az-express-errors');
 
 app.use('/api', zoneErrors());
 ```
