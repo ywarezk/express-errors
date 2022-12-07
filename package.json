@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/ywarezk/express-zonejs-errors#readme",
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "^4.3.4",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
