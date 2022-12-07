@@ -26,6 +26,7 @@ jobs:
           node-version: 18.12.1
       - run: |
           npm install
+          npm build
           npm run lint
           npm test
           npm run coverage
