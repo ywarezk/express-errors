@@ -3,7 +3,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/ywarezk/express-errors/badge.svg)]
 ![build](https://github.com/ywarezk/express-errors/actions/workflows/ci.yaml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ywarezk/express-errors/badge.svg)](https://coveralls.io/github/ywarezk/express-errors)
-[![npm version](https://badge.fury.io/js/express-errors.svg)](https://badge.fury.io/js/express-errors)
+[![npm version](https://badge.fury.io/js/az-express-errors.svg)](https://badge.fury.io/js/az-express-errors)
 
 ## TLDR;
 
