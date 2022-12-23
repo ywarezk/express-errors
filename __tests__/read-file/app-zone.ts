@@ -9,9 +9,9 @@
  */
 
 import { promises } from 'fs';
-import { createApp, StamStrategy2 } from '../test-utils';
+import { createApp } from '../test-utils';
 
-const app = createApp(undefined, new StamStrategy2());
+const app = createApp();
 
 app.get('*', async function() {
     await promises.readFile('/path/to/nowhere');

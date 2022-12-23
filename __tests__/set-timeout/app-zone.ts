@@ -8,10 +8,10 @@
  * @license: MIT
  */
 
-import { createApp, StamStrategy } from '../test-utils';
+import { createApp } from '../test-utils';
 import { Application } from 'express';
 
-const app = createApp(undefined, new StamStrategy());
+const app = createApp();
 const appNoStrategy = createApp();
 
 function setRoutes(app: Application): void {
