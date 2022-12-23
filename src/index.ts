@@ -43,3 +43,5 @@ export default function zoneErrors(): RequestHandler {
         });
     };
 }
+
+module.exports = zoneErrors;

@@ -1,6 +1,6 @@
 {
   "name": "az-express-errors",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Better way to deal with express error handling. The right way to deal with async errors",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
