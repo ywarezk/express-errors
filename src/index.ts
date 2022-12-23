@@ -38,7 +38,7 @@ export default function zoneErrors(): RequestHandler {
             name: 'express-zone',
             onHandleError,
         });
-        req.azZone.run(() => {
+        req.azZone.runGuarded(() => {
             next();
         });
     };
