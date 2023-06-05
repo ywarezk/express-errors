@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/ywarezk/express-zonejs-errors#readme",
   "dependencies": {
-    "zone.js": "^0.12.0"
+    "zone.js": "^0.13.0"
   },
   "devDependencies": {
     "@types/autocannon": "^4.1.0",
